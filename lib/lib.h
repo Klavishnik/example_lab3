@@ -34,7 +34,7 @@ int array_fill(int ** array, int size_array);
 //Function print message of exit status function 
 //
 //PARAMETRS:
-//first arg - return code 
+//first arg - return code (see Returns enum)
 //
 //RETURN VALUE:
 //OK - fill succesfull
