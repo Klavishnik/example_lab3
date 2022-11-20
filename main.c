@@ -27,9 +27,10 @@ int main()
 
 	array_print(arr_in, arr_in_size);
 	
-
+	array_remove(&arr_in, &arr_in_size, 1);
 	
 
+	array_print(arr_in, arr_in_size);
 
 
 	free(arr_in);

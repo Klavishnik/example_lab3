@@ -45,7 +45,29 @@ int array_print(int * array, int size)
 }
 
 
+int array_remove(int ** array, int * size, int index)
+{
 
+	if( *size <= 0)
+               return SIZE_ERROR;
+
+        if( *array == NULL)
+                return ARRAY_EMPTY;
+
+	if( (index < 0) || (index > *size ))
+		return INDEX_ERROR;
+
+	for( int i = index; i < *size - 1; i++)
+	{
+		*array[i] = *array[i + 1];
+	}
+
+	*size = *size - 1;
+	*array = realloc(*array, *size * sizeof(int));
+	
+	return OK;
+
+}
 
 
 
