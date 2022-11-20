@@ -1,5 +1,15 @@
-//
+
 #include "lib.h"
+
+
+static char *ErrorNmes[] = {
+    "Success",
+    "Array size is negative or zero value",
+    "Array is not empty",
+    "Array is empty",
+    "Index of array negative or more size of array"
+};
+
 
 //------------------private functions-----------------------------//
 int max_module(int input)
@@ -9,21 +19,15 @@ int max_module(int input)
 	int copy_input = input;
 	if (input <= 0)
 		return -1;
-	while(input)
-	{	
-		local_max = input % 10;
+	for(int i = 9; i > 0; i--)
+	{
+		copy_input = input;
 		while(copy_input)
-		{
-			int tmp = copy_input % 10;
-			if( local_max < tmp )
-				local_max = tmp;
+		{	
+			if(copy_input % 10 == i)
+				out = out * 10 + i;
 			copy_input = copy_input / 10;
 		}
-
-		input = input / 10;
-		copy_input = input;
-		out = out * 10;
-		out = out + local_max;
 	}
 
 	return out;
@@ -116,7 +120,7 @@ int main_task(int ** arr_in, int * arr_in_size, int ** arr_out, int * arr_out_si
 		if( (*arr_in)[i] == new_value )
 		{
 			array_push(arr_out, arr_out_size, (*arr_in)[i]);
-			array_remove(arr_in, arr_in_size, i);
+			array_remove(arr_in, arr_in_size, i--);
 		}
 		else
 		{
