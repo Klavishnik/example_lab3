@@ -1,5 +1,5 @@
 CC = clang 
-CFLAGS = -g -fsanitize=address
+CFLAGS = -g -fsanitize=address -Wall -Wextra
 LDFLAGS = -fsanitize=address
 OUT_BIN = bin
 SOURCE = main.c
