@@ -1,19 +1,48 @@
-CC = clang 
-CFLAGS = -g -fsanitize=address -Wall -Wextra
-LDFLAGS = -fsanitize=address
-OUT_BIN = bin
-SOURCE = main.c
-LIB = lib.c
+CC =clang
 
-all: 	lib main	
-	$(CC) -g $(LDFLAGS) lib.o main.o -o $(OUT_BIN)
+RELEASE_CFLAGS =-g0 -O2 -fvisibility=hidden
 
-lib:
-	
-	$(CC) -c $(LIB) $(CFLAGS) -o lib.o
+DEBUG_CFLAGS = -gdwarf-4 -fno-omit-frame-pointer -Wall -Wextra -Wpedantic -Werror -O0
 
-main:
-	$(CC) -c $(SOURCE) $(CFLAGS) -o main.o
+LDFLAGS =  -fsanitize=address 
+
+REPORT_DIR = reports
+ANALYZE_FLAGS = --analyze -Xanalyzer
+
+SRC = *.c lib/*.c
+
+ADDRESS_FLAGS= -fsanitize=address 
 
 
+all:	release
 
+
+analyze:
+	#$(CC) lib/utils.c --analyze -Xanalyzer
+	$(CC) $(ANALYZE_FLAGS) lib/lib.c main.c
+
+debug:
+	$(CC) $(DEBUG_CFLAGS) -c $(SRC)
+	$(CC) *.o -o bin_debug
+
+address:
+	$(CC) $(DEBUG_CFLAGS) $(ADDRESS_FLAGS) -c $(SRC)
+	$(CC) $(LDFLAGS) *.o -o bin_asan
+
+release:
+	$(CC) $(RELEASE_CFLAGS) -c $(SRC)
+	$(CC)  *.o -o bin_release
+
+clean:
+	rm -rf $(REPORT_DIR)
+	rm -rf bin*
+	rm -rf *.o 
+
+help:
+	@echo Available goal:
+	@echo '  release - make bin without -g and sanitise with optimisation 02'
+	@echo '  analyze - run with static analyzer'
+	@echo '  debug   - build with debug flags (no sanitsers)'
+	@echo '  address - build + sanitisers'
+	@echo '  clean   - delete result and backup files'
+	@echo '  help    - show this message's
