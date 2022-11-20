@@ -101,23 +101,26 @@ int array_remove(int ** array, int * size, int index)
 
 int main_task(int ** arr_in, int * arr_in_size, int ** arr_out, int * arr_out_size)
 {
-	if( *arr_in == NULL || *arr_out == NULL)
+	if( *arr_in == NULL)
 		return ARRAY_EMPTY;
-	if( *arr_in_size <= 0 || *arr_out_size <= 0)
+	if(*arr_out != NULL)
+		return ARRAY_NOT_EMPTY;
+	if( *arr_in_size <= 0 )
 		return SIZE_ERROR;
 	
 	//find elements 
 	
 	for( int i = 0;  i < *arr_in_size; i++)
 	{
-		int new_value = max_module(*arr_in[i]);
-		if( *arr_in[i] == new_value )
+		int new_value = max_module( (*arr_in)[i] );
+		if( (*arr_in)[i] == new_value )
 		{
-			
+			array_push(arr_out, arr_out_size, (*arr_in)[i]);
+			array_remove(arr_in, arr_in_size, i);
 		}
 		else
 		{
-
+			(*arr_in)[i] = new_value;
 		}
 
 	}
@@ -126,7 +129,7 @@ int main_task(int ** arr_in, int * arr_in_size, int ** arr_out, int * arr_out_si
 
 int array_push(int ** array, int * size, int element)
 {
-	if( *size <= 0)
+	if( *size < 0)
                return SIZE_ERROR;
 	
 	*array = realloc(*array, (*size + 1) * sizeof(int));

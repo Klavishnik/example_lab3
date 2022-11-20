@@ -92,4 +92,7 @@ int array_remove(int ** array, int * size, int index);
 //SIZE_ERROR - size of array are negative of zero
 int array_push(int ** array, int * size, int element);
 
+int main_task(int ** arr_in, int * arr_in_size, int ** arr_out, int * arr_out_size);
+
+
 #endif

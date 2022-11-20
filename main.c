@@ -29,20 +29,22 @@ int main()
 
 	printf("Original array\n");
 	array_print(arr_in, arr_in_size);
-
-	array_push(&arr_in, &arr_in_size, 4);
 	
-	printf("changed array\n");
+
+	return_code = main_task(&arr_in, &arr_in_size, &arr_out, &arr_out_size);
+	if(return_code)
+		code_exit_print(return_code);
+		
+
+	printf("Array 1\n");
 	array_print(arr_in, arr_in_size);
 
 
-	array_remove(&arr_in, &arr_in_size, 0);
-
-	printf("changed array\n");
-	array_print(arr_in, arr_in_size);
-
+	printf("Array 2\n");
+	array_print(arr_out, arr_out_size);
 
 	free(arr_in);
+	free(arr_out);
 	return 0;
 }
 
