@@ -1,7 +1,36 @@
 //
-//#include <stdlib.h>
-//#include <stdio.h>
 #include "lib.h"
+
+//------------------private functions-----------------------------//
+int max_module(int input)
+{
+	int out = 0;
+	int local_max = 0;
+	int copy_input = input;
+	if (input <= 0)
+		return -1;
+	while(input)
+	{	
+		local_max = input % 10;
+		while(copy_input)
+		{
+			int tmp = copy_input % 10;
+			if( local_max < tmp )
+				local_max = tmp;
+			copy_input = copy_input / 10;
+		}
+
+		input = input / 10;
+		copy_input = input;
+		out = out * 10;
+		out = out + local_max;
+	}
+
+	return out;
+
+}
+
+//------------------public functions-----------------------------//
 
 int array_fill(int ** array, int size_array)
 {
@@ -59,7 +88,7 @@ int array_remove(int ** array, int * size, int index)
 
 	for( int i = index; i < *size - 1; i++)
 	{
-		*array[i] = *array[i + 1];
+		(*array)[i] = (*array)[i + 1];
 	}
 
 	*size = *size - 1;
@@ -70,34 +99,41 @@ int array_remove(int ** array, int * size, int index)
 }
 
 
-
-//------------------private functions-----------------------------//
-int max_module(int input)
+int main_task(int ** arr_in, int * arr_in_size, int ** arr_out, int * arr_out_size)
 {
-	int out = 0;
-	int local_max = 0;
-	int copy_input = input;
-	if (input <= 0)
-		return -1;
-	while(input)
-	{	
-		local_max = input % 10;
-		while(copy_input)
+	if( *arr_in == NULL || *arr_out == NULL)
+		return ARRAY_EMPTY;
+	if( *arr_in_size <= 0 || *arr_out_size <= 0)
+		return SIZE_ERROR;
+	
+	//find elements 
+	
+	for( int i = 0;  i < *arr_in_size; i++)
+	{
+		int new_value = max_module(*arr_in[i]);
+		if( *arr_in[i] == new_value )
 		{
-			int tmp = copy_input % 10;
-			if( local_max < tmp )
-				local_max = tmp;
-			copy_input = copy_input / 10;
+			
+		}
+		else
+		{
+
 		}
 
-		input = input / 10;
-		copy_input = input;
-		out = out * 10;
-		out = out + local_max;
 	}
+	return OK;
+}
 
-	return out;
-
+int array_push(int ** array, int * size, int element)
+{
+	if( *size <= 0)
+               return SIZE_ERROR;
+	
+	*array = realloc(*array, (*size + 1) * sizeof(int));
+	(*array)[*size] = element;
+	*size = *size + 1;
+	
+	return OK;
 }
 
 

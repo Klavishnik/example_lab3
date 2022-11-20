@@ -77,4 +77,19 @@ int array_print(int * array, int size);
 int array_remove(int ** array, int * size, int index);
 
 
+//DESCRIPTION:
+//Function add new element to end of array
+//It make realloc and change size to +1
+//
+//
+//PARAMETRS:
+//first arg - address  of array
+//second arg - pointer size of array (after realloc  it will be +1)
+//third arg - value whick will be writed to end of array
+//
+//RETURN VALUE:
+//OK - printf succesfull
+//SIZE_ERROR - size of array are negative of zero
+int array_push(int ** array, int * size, int element);
+
 #endif

@@ -6,6 +6,8 @@
 int main()
 {
 
+	char task[] = {"Для каждого элемента массива переделать его так, чтобы оно стало максимальным по модулю. Удалить из исходного массива элементы которые не изменились и добавить их во второй массив"};
+
 	int * arr_in = NULL;
 	int * arr_out = NULL;
 
@@ -14,7 +16,7 @@ int main()
 	
 	int return_code = 0;
 
-	printf("Helllo\n");
+	printf("%s\n", task);
 	printf("Enter size of array\n");
 	scanf("%i",&arr_in_size);
 
@@ -25,17 +27,25 @@ int main()
 		return 1;
 	}
 
+	printf("Original array\n");
 	array_print(arr_in, arr_in_size);
-	
-	array_remove(&arr_in, &arr_in_size, 1);
-	
 
+	array_push(&arr_in, &arr_in_size, 4);
+	
+	printf("changed array\n");
+	array_print(arr_in, arr_in_size);
+
+
+	array_remove(&arr_in, &arr_in_size, 0);
+
+	printf("changed array\n");
 	array_print(arr_in, arr_in_size);
 
 
 	free(arr_in);
 	return 0;
 }
+
 
 
 
