@@ -45,4 +45,4 @@ help:
 	@echo '  debug   - build with debug flags (no sanitsers)'
 	@echo '  address - build + sanitisers'
 	@echo '  clean   - delete result and backup files'
-	@echo '  help    - show this message's
+	@echo '  help    - show this message'
