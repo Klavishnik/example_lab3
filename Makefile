@@ -18,7 +18,6 @@ all:	release
 
 
 analyze:
-	#$(CC) lib/utils.c --analyze -Xanalyzer
 	$(CC) $(ANALYZE_FLAGS) lib/lib.c main.c
 
 debug:
