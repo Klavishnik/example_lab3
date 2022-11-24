@@ -27,7 +27,7 @@ enum Returns
 //OK - fill succesfull
 //SIZE_ERROR - size of array are negative of zero
 //ARRAY_NOT_EMPTY - pointer to array is not NULL
-int array_fill(int ** array, int size_array);
+int array_fill(int ** array, const int size_array);
 
 
 //DESCRIPTION:
@@ -39,7 +39,7 @@ int array_fill(int ** array, int size_array);
 //RETURN VALUE:
 //OK - fill succesfull
 //SIZE_ERROR - size of array are negative of zero
-int code_exit_print(int code);
+int code_exit_print(const int code);
 
 
 //DESCRIPTION:
@@ -53,7 +53,7 @@ int code_exit_print(int code);
 //OK - printf succesfull
 //SIZE_ERROR - size of array are negative of zero
 //ARRAY_EMPTY - pointer is EMPTY
-int array_print(int * array, int size);
+int array_print(int * array, const int size);
 
 
 //DESCRIPTION:
@@ -84,7 +84,7 @@ int array_remove(int ** array, int * size, int index);
 //RETURN VALUE:
 //OK - printf succesfull
 //SIZE_ERROR - size of array are negative of zero
-int array_push(int ** array, int * size, int element);
+int array_push(int ** array, int * size, const int element);
 
 
 //DESCRIPTION:
