@@ -32,6 +32,22 @@ int max_module(int input)
 
 }
 
+int * __array_fill(int * array, int size_array)
+{
+	array = (int *) malloc( size_array * sizeof(int) );
+        for (int i = 0; i < size_array; i++)
+        {
+                printf("[%i]:", i);
+                scanf("%i", array + i);
+	}
+	return array;
+}
+
+
+
+
+
+
 //------------------public functions-----------------------------//
 
 int array_fill(int ** array, int size_array)
@@ -42,13 +58,7 @@ int array_fill(int ** array, int size_array)
         if( *array != NULL)
                 return ARRAY_NOT_EMPTY;
 
-	*array = (int *) malloc( size_array * sizeof(int) );
-        for (int i = 0; i < size_array; i++)
-        {
-                printf("[%i]:", i);
-        	scanf("%i", *array + i);
-        }
-	
+	*array = __array_fill(*array, size_array);
 	return OK;
 }    
 

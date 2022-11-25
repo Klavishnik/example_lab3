@@ -9,7 +9,7 @@ LDFLAGS =  -fsanitize=address
 REPORT_DIR = reports
 ANALYZE_FLAGS = --analyze -Xanalyzer
 
-SRC = *.c lib/*.c
+SRC = main.c lib/*.c
 
 ADDRESS_FLAGS= -fsanitize=address 
 

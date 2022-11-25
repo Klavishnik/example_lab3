@@ -26,8 +26,6 @@ int main()
 		int len = __AFL_FUZZ_TESTCASE_LEN;
          	int return_code = array_fill(buf, len);
 		    return_code = array_print(buf, len);	
-		int secret = rand();
-//		array_push(buf, len, secret);
 
 	}
 	return 0;
