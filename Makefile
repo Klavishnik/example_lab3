@@ -53,4 +53,5 @@ help:
 	@echo '  debug   - build with debug flags (no sanitsers)'
 	@echo '  address - build + sanitisers'
 	@echo '  clean   - delete result and backup files'
+	@echo '  fuzz    - buid with afl with ASAN'
 	@echo '  help    - show this message'
