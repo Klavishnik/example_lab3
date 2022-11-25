@@ -36,6 +36,15 @@ clean:
 	rm -rf $(REPORT_DIR)
 	rm -rf bin*
 	rm -rf *.o 
+	rm -rf in/ out/
+fuzz:
+	@export AFL_USE_ASAN=1
+	afl-clang  $(DEBUG_CFLAGS) -c $(SRC)
+	afl-clang -c fuzz.c -o fuzz.o
+	afl-clang fuzz.o lib.o -o bin_fuzz
+	mkdir in out
+	echo 1 >> in/1
+
 
 help:
 	@echo Available goal:
