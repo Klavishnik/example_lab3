@@ -1,6 +1,7 @@
 
 #include "lib.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 
 static char *ErrorNmes[] = {
     "Success",
